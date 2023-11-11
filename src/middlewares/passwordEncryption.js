@@ -1,19 +1,19 @@
-// const bcrypt = require("bcrypt");
-// const clientProfileModel = require("../models/clientProfileModel");
-// const instructorProfileModel = require("../models/instructorProfileModel");
+const bcrypt = require("bcrypt");
+const clientProfileModel = require("../models/clientProfileModel");
+const instructorProfileModel = require("../models/instructorProfileModel");
 
-// //encrypt the real password from req body to hashed password and send it the header req again so that response can save hashed password to the database.
-// exports.hashedPassword = (req, res, next) => {
-//   let password = req.body.password;
-//   bcrypt.hash(password, 12, (err, hash) => {
-//     if (err) {
-//       console.log(err);
-//     } else {
-//       req.headers["passKey"] = hash;
-//       next();
-//     }
-//   });
-// };
+//encrypt the real password from req body to hashed password and send it the header req again so that response can save hashed password to the database.
+exports.hashedPassword = (req, res, next) => {
+  let password = req.body.password;
+  bcrypt.hash(password, 12, (err, hash) => {
+    if (err) {
+      console.log(err);
+    } else {
+      req.headers["passKey"] = hash;
+      next();
+    }
+  });
+};
 
 // exports.hashedPasswordCustom = async (pass) => {
 //   try {

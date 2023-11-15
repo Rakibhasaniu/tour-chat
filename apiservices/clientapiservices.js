@@ -1,151 +1,146 @@
-// exports.selectData = async(query, projection) => {
+exports.selectData = async (query, projection) => {
+  const payloaddata = {
+    query: query,
+    projection: projection,
+  };
+  const res = await fetch("/apis/v1/select-clients", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payloaddata),
+  });
 
-//     const payloaddata ={
-//         query:query,
-//         projection:projection
-//     };
-//     const res = await fetch('/apis/v1/select-clients', {
-//         method: 'POST',
-//         headers: {
-//           'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify(payloaddata),
-//     })
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error("Failed to fetch data");
+  }
 
-//     if(!res.ok) {
-//       // This will activate the closest `error.js` Error Boundary
-//       throw new Error('Failed to fetch data')
-//     }
+  return res.json();
+};
 
-//     return res.json()
-// }
+exports.selectAllData = async (query, projection) => {
+  const payloaddata = {
+    query: query,
+    projection: projection,
+  };
+  const res = await fetch("/apis/v1/select-all-clients", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payloaddata),
+  });
 
-// exports.selectAllData = async(query, projection) => {
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error("Failed to fetch data");
+  }
 
-//     const payloaddata ={
-//         query:query,
-//         projection:projection
-//     };
-//     const res = await fetch('/apis/v1/select-all-clients', {
-//         method: 'POST',
-//         headers: {
-//           'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify(payloaddata),
-//     })
+  return res.json();
+};
+exports.selectAllDataPublic = async (query) => {
+  const payloaddata = {
+    query: query,
+  };
+  const res = await fetch("/apis/v1/select-all-clients-public", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payloaddata),
+  });
 
-//     if(!res.ok) {
-//       // This will activate the closest `error.js` Error Boundary
-//       throw new Error('Failed to fetch data')
-//     }
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error("Failed to fetch data");
+  }
 
-//     return res.json()
-// }
-// exports.selectAllDataPublic = async(query) => {
+  return res.json();
+};
 
-//     const payloaddata ={
-//         query:query
-//     };
-//     const res = await fetch('/apis/v1/select-all-clients-public', {
-//         method: 'POST',
-//         headers: {
-//           'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify(payloaddata),
-//     })
+exports.deleteData = async (id) => {
+  console.log("clicked" + id);
 
-//     if(!res.ok) {
-//       // This will activate the closest `error.js` Error Boundary
-//       throw new Error('Failed to fetch data')
-//     }
+  const res = await fetch(`/apis/v1/delete-client/${id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
 
-//     return res.json()
-// }
+  if (!res.ok) {
+    console.log(res);
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error("Failed to fetch data");
+  }
 
-// exports.deleteData = async(id) => {
-//   console.log("clicked" + id);
+  return res.json();
+};
 
-//     const res = await fetch(`/apis/v1/delete-client/${id}`, {
-//         method: 'DELETE',
-//         headers: {
-//           'Content-Type': 'application/json'
-//         }
-//     })
+exports.createData = async (
+  userName,
+  clientEmail,
+  clientPhone,
+  activeStatus,
+  password,
+  profileImage
+) => {
+  const aboutdata = {
+    userName,
+    clientEmail,
+    clientPhone,
+    activeStatus,
+    password,
+    profileImage,
+  };
 
-//     if(!res.ok) {
-//       console.log(res);
-//       // This will activate the closest `error.js` Error Boundary
-//       throw new Error('Failed to fetch data')
+  const res = await fetch(`/apis/v1/create-client`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(aboutdata),
+  });
 
-//     }
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error("Failed to fetch data");
+  }
 
-//     return res.json()
-// }
+  return res.json();
+};
 
-// exports.createData = async(
-//         userName,
-//         clientEmail,
-//         clientPhone,
-//         activeStatus,
-//         password,
-//         profileImage) => {
+exports.updateData = async (
+  idValue,
+  userName,
+  clientEmail,
+  clientPhone,
+  activeStatus,
+  password,
+  profileImage
+) => {
+  const aboutdata = {
+    _id: idValue,
+    userName,
+    clientEmail,
+    clientPhone,
+    activeStatus,
+    password,
+    profileImage,
+  };
 
-//     const aboutdata={
-//         userName,
-//         clientEmail,
-//         clientPhone,
-//         activeStatus,
-//         password,
-//         profileImage
-//  }
+  const res = await fetch(`/apis/v1/update-client`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(aboutdata),
+  });
 
-//   const res = await fetch(`/apis/v1/create-client`, {
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json'
-//       },
-//       body: JSON.stringify(aboutdata)
-//   })
-
-//   if(!res.ok) {
-//     // This will activate the closest `error.js` Error Boundary
-//     throw new Error('Failed to fetch data')
-//   }
-
-//   return res.json()
-// }
-
-// exports.updateData = async(
-//     idValue,
-//     userName,
-//     clientEmail,
-//     clientPhone,
-//     activeStatus,
-//     password,
-//     profileImage
-// ) => {
-
-//   const aboutdata={
-//     _id: idValue,
-//     userName,
-//     clientEmail,
-//     clientPhone,
-//     activeStatus,
-//     password,
-//     profileImage
-//  }
-
-//   const res = await fetch(`/apis/v1/update-client`, {
-//       method: 'PUT',
-//       headers: {
-//         'Content-Type': 'application/json'
-//       },
-//       body: JSON.stringify(aboutdata)
-//   })
-
-//   if(!res.ok) {
-//     // This will activate the closest `error.js` Error Boundary
-//     throw new Error('Failed to fetch data')
-//   }
-//   return res.json()
-// }
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error("Failed to fetch data");
+  }
+  return res.json();
+};

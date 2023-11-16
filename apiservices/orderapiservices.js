@@ -1,129 +1,118 @@
-exports.selectData = async(query, projection) => {
+// exports.selectData = async(query, projection) => {
 
-    
+//     const payloaddata ={
+//         query:query,
+//         projection:projection
+//     };
+//     const res = await fetch('/apis/v1/select-orders', {
+//         method: 'POST',
+//         headers: {
+//           'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify(payloaddata),
+//     })
 
-    const payloaddata ={
-        query:query,
-        projection:projection
-    };
-    const res = await fetch('/apis/v1/select-orders', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(payloaddata),
-    })
+//     if(!res.ok) {
+//       // This will activate the closest `error.js` Error Boundary
+//       throw new Error('Failed to fetch data')
+//     }
 
-    if(!res.ok) {
-      // This will activate the closest `error.js` Error Boundary
-      throw new Error('Failed to fetch data')
-    }
-   
-    return res.json()
-}
+//     return res.json()
+// }
 
+// exports.deleteData = async(id) => {
 
-exports.deleteData = async(id) => {
+//     const res = await fetch(`/apis/v1/delete-order/${id}`, {
+//         method: 'DELETE',
+//         headers: {
+//           'Content-Type': 'application/json'
+//         }
+//     })
 
-   
+//     if(!res.ok) {
+//       // This will activate the closest `error.js` Error Boundary
+//       throw new Error('Failed to fetch data')
+//     }
 
+//     return res.json()
+// }
 
-    const res = await fetch(`/apis/v1/delete-order/${id}`, {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json' 
-        }
-    })
+// exports.createData = async(
+//     orderID,
+//     packageID,
+//     instructorID,
+//     orderDescription,
+//     orderStatus,
+//     orderPrice,
+//     orderNumber,
+//     activeStatus,
+//     clientID) => {
 
-    if(!res.ok) {
-      // This will activate the closest `error.js` Error Boundary
-      throw new Error('Failed to fetch data')
-    }
-   
-    return res.json()
-}
+//     const aboutdata={
+//         orderID,
+//         packageID,
+//         instructorID,
+//         orderDescription,
+//         orderStatus,
+//         orderPrice,
+//         orderNumber,
+//         activeStatus,
+//         clientID
+//  }
 
+//   const res = await fetch(`/apis/v1/create-order`, {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json'
+//       },
+//       body: JSON.stringify(aboutdata)
+//   })
 
-exports.createData = async(
-    orderID,
-    packageID,
-    instructorID,
-    orderDescription,
-    orderStatus,
-    orderPrice,
-    orderNumber,
-    activeStatus,
-    clientID) => {
+//   if(!res.ok) {
+//     // This will activate the closest `error.js` Error Boundary
+//     throw new Error('Failed to fetch data')
+//   }
 
-    const aboutdata={
-        orderID,
-        packageID,
-        instructorID,
-        orderDescription,
-        orderStatus,
-        orderPrice,
-        orderNumber,
-        activeStatus,
-        clientID
- }
+//   return res.json()
+// }
 
+// exports.updateData = async(
+//     idValue,
+//     orderID,
+//     packageID,
+//     instructorID,
+//     orderDescription,
+//     orderStatus,
+//     orderPrice,
+//     orderNumber,
+//     activeStatus,
+//     clientID
+// ) => {
 
-  const res = await fetch(`/apis/v1/create-order`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(aboutdata)
-  })
+//   const aboutdata={
+//     _id: idValue,
+//     orderID,
+//     packageID,
+//     instructorID,
+//     orderDescription,
+//     orderStatus,
+//     orderPrice,
+//     orderNumber,
+//     activeStatus,
+//     clientID
+//  }
 
-  if(!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
-    throw new Error('Failed to fetch data')
-  }
- 
-  return res.json()
-}
+//   const res = await fetch(`/apis/v1/update-order`, {
+//       method: 'PUT',
+//       headers: {
+//         'Content-Type': 'application/json'
+//       },
+//       body: JSON.stringify(aboutdata)
+//   })
 
-
-exports.updateData = async(
-    idValue,
-    orderID,
-    packageID,
-    instructorID,
-    orderDescription,
-    orderStatus,
-    orderPrice,
-    orderNumber,
-    activeStatus,
-    clientID
-) => {
-
-  
-
-  const aboutdata={
-    _id: idValue,
-    orderID,
-    packageID,
-    instructorID,
-    orderDescription,
-    orderStatus,
-    orderPrice,
-    orderNumber,
-    activeStatus,
-    clientID
- }
-
-  const res = await fetch(`/apis/v1/update-order`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(aboutdata)
-  })
-
-  if(!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
-    throw new Error('Failed to fetch data')
-  }
-  return res.json()
-}
+//   if(!res.ok) {
+//     // This will activate the closest `error.js` Error Boundary
+//     throw new Error('Failed to fetch data')
+//   }
+//   return res.json()
+// }

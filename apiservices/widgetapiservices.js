@@ -1,121 +1,107 @@
-exports.selectData = async(query, projection) => {
+// exports.selectData = async(query, projection) => {
 
-    
+//     const payloaddata ={
+//         query:query,
+//         projection:projection
+//     };
+//     const res = await fetch('/apis/v1/select-widgets', {
+//         method: 'POST',
+//         headers: {
+//           'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify(payloaddata),
+//     })
 
-    const payloaddata ={
-        query:query,
-        projection:projection
-    };
-    const res = await fetch('/apis/v1/select-widgets', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json' 
-        },
-        body: JSON.stringify(payloaddata),
-    })
+//     if(!res.ok) {
+//       // This will activate the closest `error.js` Error Boundary
+//       throw new Error('Failed to fetch data')
+//     }
 
-    if(!res.ok) {
-      // This will activate the closest `error.js` Error Boundary
-      throw new Error('Failed to fetch data')
-    }
-   
-    return res.json()
-}
-exports.selectDataPublic = async(query, projection) => {
+//     return res.json()
+// }
+// exports.selectDataPublic = async(query, projection) => {
 
-    
+//     const payloaddata ={
+//         query:query,
+//         projection:projection
+//     };
+//     const res = await fetch('/apis/v1//select-widgets-public', {
+//         method: 'POST',
+//         headers: {
+//           'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify(payloaddata),
+//     })
 
-    const payloaddata ={
-        query:query,
-        projection:projection
-    };
-    const res = await fetch('/apis/v1//select-widgets-public', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json' 
-        },
-        body: JSON.stringify(payloaddata),
-    })
+//     if(!res.ok) {
+//       // This will activate the closest `error.js` Error Boundary
+//       throw new Error('Failed to fetch data')
+//     }
 
-    if(!res.ok) {
-      // This will activate the closest `error.js` Error Boundary
-      throw new Error('Failed to fetch data')
-    }
-   
-    return res.json()
-}
+//     return res.json()
+// }
 
+// exports.deleteData = async(id) => {
 
-exports.deleteData = async(id) => {
+//     const res = await fetch(`/apis/v1/delete-widget/${id}`, {
+//         method: 'DELETE',
+//         headers: {
+//           'Content-Type': 'application/json'
+//         }
+//     })
 
-   
+//     if(!res.ok) {
+//       // This will activate the closest `error.js` Error Boundary
+//       throw new Error('Failed to fetch data')
+//     }
 
+//     return res.json()
+// }
 
-    const res = await fetch(`/apis/v1/delete-widget/${id}`, {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json' 
-        }
-    })
+// exports.createData = async(widgetName,widgetPayload,activeStatus) => {
 
-    if(!res.ok) {
-      // This will activate the closest `error.js` Error Boundary
-      throw new Error('Failed to fetch data')
-    }
-   
-    return res.json()
-}
+//   const aboutdata={
+//     widgetName:widgetName,
+//     widgetPayload:widgetPayload,
+//     activeStatus:activeStatus
+//  }
 
+//   const res = await fetch(`/apis/v1/create-widget`, {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json'
+//       },
+//       body: JSON.stringify(aboutdata)
+//   })
 
-exports.createData = async(widgetName,widgetPayload,activeStatus) => {
+//   if(!res.ok) {
+//     // This will activate the closest `error.js` Error Boundary
+//     throw new Error('Failed to fetch data')
+//   }
 
- 
+//   return res.json()
+// }
 
-  const aboutdata={
-    widgetName:widgetName,
-    widgetPayload:widgetPayload,
-    activeStatus:activeStatus
- }
+// exports.updateData = async(widgetName,widgetPayload,activeStatus,idValue) => {
 
-  const res = await fetch(`/apis/v1/create-widget`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(aboutdata)
-  })
+//   const aboutdata={
+//     _id: idValue,
+//     widgetName:widgetName,
+//     widgetPayload:widgetPayload,
+//     activeStatus:activeStatus
+//  }
 
-  if(!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
-    throw new Error('Failed to fetch data')
-  }
- 
-  return res.json()
-}
+//   const res = await fetch(`/apis/v1/update-widget`, {
+//       method: 'PUT',
+//       headers: {
+//         'Content-Type': 'application/json'
+//       },
+//       body: JSON.stringify(aboutdata)
+//   })
 
-
-exports.updateData = async(widgetName,widgetPayload,activeStatus,idValue) => {
-
- 
-
-  const aboutdata={
-    _id: idValue,
-    widgetName:widgetName,
-    widgetPayload:widgetPayload,
-    activeStatus:activeStatus
- }
-
-  const res = await fetch(`/apis/v1/update-widget`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(aboutdata)
-  })
-
-  if(!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
-    throw new Error('Failed to fetch data')
-  }
-  return res.json()
-}
+//   if(!res.ok) {
+//     // This will activate the closest `error.js` Error Boundary
+//     throw new Error('Failed to fetch data')
+//   }
+//   return res.json()
+// }

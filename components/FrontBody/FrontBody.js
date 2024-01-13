@@ -38,6 +38,7 @@ function FrontBody({ children }) {
         dispatch(setInitialData(dataArray.data));
         dispatch(setinitialPosts(dataArray3.data));
         setFrontWidget(dataArray2.data);
+        console.log(dataArray2);
       } catch (error) {
         console.error("Error in settingData:", error);
       }
@@ -71,16 +72,17 @@ function FrontBody({ children }) {
   }
 
   if (filteredPackageData && frontWidget && filteredPostData) {
+    console.log(frontWidget);
     let front_client_instructor = frontWidget.find(
       (item) => item.widgetName == "front_client_instructor"
-    ).widgetPayload;
+    )?.widgetPayload;
     let why_choose = frontWidget.find(
       (item) => item.widgetName == "why_choose"
-    ).widgetPayload;
+    )?.widgetPayload;
     let our_partner = frontWidget.find(
       (item) => item.widgetName == "our_partner"
-    ).widgetPayload;
-
+    )?.widgetPayload;
+    console.log(front_client_instructor);
     return (
       <div style={{ overflowX: "hidden" }} className="container-custom">
         <div
@@ -89,14 +91,16 @@ function FrontBody({ children }) {
         >
           <div className="slide" data-anchor="slide1">
             <div className="row px-2 px-md-5 row-cols-1 row-cols-md-2">
-              {front_client_instructor.map((item, i) => (
+              {front_client_instructor?.map((item, i) => (
                 <div
                   key={i}
                   className="col px-4 px-md-5 mb-5 mb-md-0 animate__animated animate__backInLeft animate__delay-5s"
                 >
                   <Link href={item.link}>
-                    <div style={{background:`url("${item.image}")`}} className="card-front-sec card bg-dark text-white">
-                      
+                    <div
+                      style={{ background: `url("${item.image}")` }}
+                      className="card-front-sec card bg-dark text-white"
+                    >
                       <div className="card-img-overlay">
                         <h1 className="card-title">{item.title}</h1>
                         <h5 className="card-text">{item.description}</h5>
@@ -115,7 +119,7 @@ function FrontBody({ children }) {
             <h1 className="mb-3">Most Popular Choices</h1>
           </div>
           <div className="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-2 g-md-4 px-0 px-sm-2 px-md-5">
-            {filteredPackageData.slice(0, 8).map((item, i) => (
+            {filteredPackageData.slice(0, 8)?.map((item, i) => (
               <SinglePackage key={i} items={item} />
             ))}
           </div>
@@ -141,7 +145,7 @@ function FrontBody({ children }) {
           </div>
           <section className="service-categories text-xs-center px-0 px-md-5">
             <div className="row">
-              {why_choose.map((item, i) => (
+              {why_choose?.map((item, i) => (
                 <div key={i} className="col-6 col-md-3">
                   <Link href="/travels">
                     <div className="front-card service-card card-inverse">
@@ -164,7 +168,7 @@ function FrontBody({ children }) {
             <h1 className="mb-3">Our Partner</h1>
           </div>
           <div className="row row-cols-2 row-cols-md-6 g-5 px-2 px-md-5">
-            {our_partner.map((item, i) => (
+            {our_partner?.map((item, i) => (
               <div key={i} className="col">
                 <img style={{ width: "100%" }} src={`${item.logo}`} alt="" />
               </div>
@@ -174,7 +178,7 @@ function FrontBody({ children }) {
             <h1 className="mb-3">Our Blogs</h1>
           </div>
           <div className="row row-cols-1 row-cols-md-4 g-5 px-2 px-md-5">
-            {filteredPostData.slice(0, 4).map((item, i) => (
+            {filteredPostData.slice(0, 4)?.map((item, i) => (
               <div key={i} className="col">
                 <div className="card h-100">
                   <img
